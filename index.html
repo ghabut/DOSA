@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Merchandise Store</title>
+    <title>Dream Otaku Shop Anime</title>
     <style>
         /* Reset dasar */
         * {
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
@@ -27,17 +27,21 @@
             text-align: center;
             padding: 4rem 1rem;
             position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: bold;
+            text-transform: uppercase;
             margin-bottom: 1rem;
+            letter-spacing: 3px;
         }
 
         header p {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 2rem;
+            font-weight: 300;
         }
 
         header::before {
@@ -47,74 +51,161 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: url('https://via.placeholder.com/1200x600?text=Anime+Background') center/cover no-repeat;
+            opacity: 0.3;
             z-index: -1;
         }
 
-        /* Products Section */
-        .products {
-            padding: 3rem 1rem;
-            background: url('https://images2.alphacoders.com/132/1323685.png') center/cover no-repeat;
-        }
-
-        .product-row {
+        /* Layout Kiri-Kanan */
+        .content {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 3rem;
-            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 2rem 1rem;
         }
 
-        .product-row:nth-child(even) {
-            flex-direction: row-reverse; /* Untuk zig-zag efek */
+        .left-side, .right-side {
+            width: 48%;
+            margin-bottom: 2rem;
         }
 
-        .product-card {
-            width: 250px;
-            background-color: white;
+        /* Left Side: Deskripsi & Instagram Promotion */
+        .left-side .description {
+            background: white;
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .description h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .description p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .instagram-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .instagram-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .instagram-btn {
+            display: block;
+            width: 100%;
+            background-color: #e1306c;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .instagram-btn:hover {
+            background-color: #c13584;
+        }
+
+        .instagram-logo {
+            margin: 1rem auto;
+            width: 80px;
+            height: 80px;
+            background: url('https://i.imgur.com/OjEhQIS.jpeg') center/cover no-repeat;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* Kiri - Deskripsi Toko */
+        .left-side h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .left-side p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* Kanan - Produk */
+        .product-card {
+            width: 100%;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            z-index: 1;
+            margin-bottom: 2rem;
+            cursor: pointer;
         }
 
         .product-card img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            border-bottom: 2px solid #f1f1f1;
+            border-bottom: 4px solid #f1f1f1;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card img:hover {
+            transform: scale(1.1);
         }
 
         .product-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.7rem;
             padding: 1rem;
             text-align: center;
+            font-weight: 600;
+            color: #333;
+            text-transform: capitalize;
+            letter-spacing: 1px;
         }
 
         .product-card p {
             font-size: 1rem;
-            padding: 0 1rem 1rem;
+            padding: 0 1rem;
             color: #777;
             text-align: center;
         }
 
         .product-card .price {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
-            color: #5c90ff;
+            color: #ff5c8d;
             text-align: center;
             padding-bottom: 1rem;
         }
 
         .product-card .buy-btn {
-            background-color: #5c90ff;
+            background-color: #ff5c8d;
             color: white;
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             display: block;
             margin: 0 auto;
             text-align: center;
@@ -122,43 +213,30 @@
         }
 
         .product-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
         }
 
         .product-card:hover .buy-btn {
-            background-color: #5c90ff;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-
-        footer a {
-            color: #5c90ff;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
+            background-color: #e04e77;
         }
 
         /* Responsiveness */
         @media (max-width: 768px) {
-            .product-row {
-                flex-direction: column;
-                align-items: center;
+            .left-side, .right-side {
+                width: 100%;
             }
 
             .product-card {
-                width: 90%;
-                margin-bottom: 2rem;
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            .instagram-feed {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
+
     </style>
 </head>
 <body>
@@ -166,14 +244,31 @@
     <!-- Header -->
     <header>
         <h1>Dream Otaku Shop Anime</h1>
-        <p>Koleksi eksklusif merchandise anime yang dapat kamu beli sekarang juga!</p>
+        <p>Temukan merchandise anime terbaik dan eksklusif untuk koleksi kamu!</p>
     </header>
 
-    <!-- Products Section -->
-    <section class="products">
-        <!-- First Product Row -->
-        <div class="product-row">
-            <!-- Calendar Anime Product -->
+    <!-- Content Section: Kiri-Kanan -->
+    <section class="content">
+        <!-- Left Side: Deskripsi & Instagram Promotion -->
+        <div class="left-side">
+            <!-- Deskripsi Toko -->
+            <div class="description">
+                <h2>Selamat Datang di Toko Merchandise Anime Kami</h2>
+                <p>Di sini, kami menyediakan berbagai produk eksklusif dan berkualitas tinggi yang terinspirasi dari anime favorit Anda. Dari kalender, stiker, gantungan kunci, hingga buku, temukan semua yang Anda butuhkan untuk menunjukkan kecintaan Anda terhadap dunia anime!</p>
+            </div>
+
+            <!-- Instagram Promotion -->
+            <div class="instagram-section">
+                <h2>Ikuti Kami di Instagram</h2>
+                <div class="instagram-logo"></div>
+                <a href="https://www.instagram.com/dosa_shop_official" class="instagram-btn" target="_blank">Follow Instagram Kami</a>
+                <p style="text-align: center; font-size: 1rem; color: #777;">Gunakan hashtag <strong>#DOSAANIME</strong> dan sebut kami di Instagram!</p>
+            </div>
+        </div>
+
+        <!-- Right Side: Produk -->
+        <div class="right-side">
+            <!-- Product Cards -->
             <div class="product-card">
                 <img src="https://images.tokopedia.net/img/cache/900/VqbcmM/2022/12/21/76cb5e4c-8b13-4e80-9ef9-476c94a20f63.png" alt="Kalender Anime">
                 <h3>Kalender Anime</h3>
@@ -182,7 +277,6 @@
                 <a href="https://shopee.co.id/product/xxxxxx" class="buy-btn" target="_blank">Beli Sekarang</a>
             </div>
 
-            <!-- Sticker Anime Product -->
             <div class="product-card">
                 <img src="https://down-id.img.susercontent.com/file/15c57b309e02153c8851868359f9f678.webp" alt="Stiker Anime">
                 <h3>Stiker Anime</h3>
@@ -190,11 +284,7 @@
                 <div class="price">Rp 30.000</div>
                 <a href="https://shopee.co.id/product/xxxxxx" class="buy-btn" target="_blank">Beli Sekarang</a>
             </div>
-        </div>
 
-        <!-- Second Product Row -->
-        <div class="product-row">
-            <!-- Keychain Anime Product -->
             <div class="product-card">
                 <img src="https://down-id.img.susercontent.com/file/20311f88aa0d986d86f879f41c1eaa2b.webp" alt="Keychain Anime">
                 <h3>Keychain Anime</h3>
@@ -203,18 +293,15 @@
                 <a href="https://shopee.co.id/product/xxxxxx" class="buy-btn" target="_blank">Beli Sekarang</a>
             </div>
 
-            <!-- NoteBook Anime Product -->
             <div class="product-card">
-                <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m1cefw033c11b9.webp" alt="NoteBook Anime">
-                <h3>NoteBook Anime</h3>
-                <p>Buku tulis dengan ilustrasi sampul dari anime populer.</p>
+                <img src="https://down-id.img.susercontent.com/file/id-11134207-7rasi-m1cefw033c11b9.webp" alt="Book Anime">
+                <h3>Buku Anime</h3>
+                <p>Buku koleksi terbaru yang berisi cerita dan ilustrasi dari anime populer.</p>
                 <div class="price">Rp 120.000</div>
                 <a href="https://shopee.co.id/product/xxxxxx" class="buy-btn" target="_blank">Beli Sekarang</a>
             </div>
-        </div>
 
-         <!-- New Product: Live2D VTuber -->
-         <div class="product-row">
+            <!-- Jasa Live2D VTuber -->
             <div class="product-card">
                 <img src="https://i.imgur.com/qhsyT0G.png" alt="Live2D VTuber">
                 <h3>Jasa Live2D Vtuber</h3>
@@ -226,9 +313,8 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 DOSA | Dibuat dengan ❤️ oleh Tim Kami</p>
-        <p><a href="#">Syarat & Ketentuan</a> | <a href="#">Kebijakan Privasi</a></p>
+    <footer style="text-align: center; padding: 2rem; background-color: #333; color: white;">
+        <p>&copy; 2024 Dream Otaku Shop Anime | <a href="#">Kebijakan Privasi</a> | <a href="#">Hubungi Kami</a></p>
     </footer>
 
 </body>
